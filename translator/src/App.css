@@ -1,0 +1,17 @@
+.appcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.inputs-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.input, .output {
+  flex: 1;
+}

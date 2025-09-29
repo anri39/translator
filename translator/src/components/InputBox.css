@@ -1,0 +1,53 @@
+.inputcontainer {
+  position: relative;
+  display: inline-block;
+}
+
+.inputbox {
+  width: 600px;
+  height: 150px;
+  border: 1px solid #dfe1e5;
+  border-radius: 8px;
+  padding: 10px 40px 30px 10px;
+  box-sizing: border-box;
+  resize: none;
+  font-size: 25px;
+}
+
+.inputbox:focus {
+  outline: none;
+}
+
+.clear-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.clear-button:hover {
+  background-color: #f1f3f4;
+  color: #333;
+}
+
+.text-count {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 12px;
+  color: #666;
+  pointer-events: none;
+  user-select: none;
+}
