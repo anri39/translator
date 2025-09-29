@@ -1,33 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./InputBox.css";
 
 type inputboxProps = {
   showwordCount: boolean;
   showclearButton: boolean;
   readonly?: boolean;
-  value: string;
-  onChange: (value: string) => void;
 };
 
 export default function InputBox({
   showwordCount,
   showclearButton,
   readonly,
-  value,
-  onChange,
 }: inputboxProps) {
   const [textCount, setTextCount] = useState(0);
+  const [textContent, setTextContent] = useState("");
   let maxChars = 5000;
-
-  // Keep textCount in sync with value prop
-  useEffect(() => {
-    setTextCount(value.length);
-  }, [value]);
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const newContent = event.target.value;
     if (newContent.length <= maxChars) {
-      onChange(newContent);
+      setTextContent(newContent);
+      setTextCount(newContent.length);
     }
   }
   return (
@@ -35,17 +28,18 @@ export default function InputBox({
       <textarea
         className="inputbox"
         onChange={handleChange}
-        value={value}
+        value={textContent}
         readOnly={readonly}
         disabled={readonly}
       />
       <button
         style={{
-          display: showclearButton && value.length > 0 ? "block" : "none",
+          display: showclearButton && textContent.length > 0 ? "block" : "none",
         }}
         className="clear-button"
         onClick={() => {
-          onChange("");
+          setTextContent("");
+          setTextCount(0);
         }}
       >
         X

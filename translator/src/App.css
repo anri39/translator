@@ -12,6 +12,7 @@
   align-items: flex-start;
 }
 
-.input, .output {
+.input,
+.output {
   flex: 1;
 }
