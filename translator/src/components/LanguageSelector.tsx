@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./LanguageSelector.css";
 
 interface Language {
@@ -25,14 +24,24 @@ const languages: Language[] = [
   { code: "ka", name: "Georgian", nativeName: "ქართული" },
 ];
 
-export default function LanguageSelector() {
-  const [fromLanguage, setFromLanguage] = useState<string>("");
-  const [toLanguage, setToLanguage] = useState<string>("es");
+type languageSelectorProps = {
+  fromWhatLanguage: string;
+  toWhatLanguage: string;
+  setFromWhatLanguage: (lang: string) => void;
+  setToWhatLanguage: (lang: string) => void;
+};
+
+export default function LanguageSelector({
+  fromWhatLanguage,
+  toWhatLanguage,
+  setFromWhatLanguage,
+  setToWhatLanguage,
+}: languageSelectorProps) {
   return (
     <div className="language-selector-container">
       <select
-        value={fromLanguage}
-        onChange={(e) => setFromLanguage(e.target.value)}
+        value={fromWhatLanguage}
+        onChange={(e) => setFromWhatLanguage(e.target.value)}
       >
         <option value="">Detect Language</option>
         {languages.map((lang) => (
@@ -43,8 +52,8 @@ export default function LanguageSelector() {
       </select>
 
       <select
-        value={toLanguage}
-        onChange={(e) => setToLanguage(e.target.value)}
+        value={toWhatLanguage}
+        onChange={(e) => setToWhatLanguage(e.target.value)}
       >
         {languages.map((lang) => (
           <option key={lang.code} value={lang.code}>

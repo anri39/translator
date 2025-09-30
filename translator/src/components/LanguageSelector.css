@@ -142,7 +142,6 @@
   color: #1a73e8;
 }
 
-
 .swap-button {
   display: flex;
   align-items: center;
@@ -172,7 +171,6 @@
   transform: scale(0.95);
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .language-selector-container {
     flex-direction: column;
@@ -180,18 +178,16 @@
     width: 100%;
     max-width: 300px;
   }
-  
+
   .language-button {
     min-width: 200px;
   }
-  
+
   .swap-button {
     transform: rotate(90deg);
   }
 }
 
-
-/* Accessibility improvements */
 .language-dropdown-menu {
   scrollbar-width: thin;
   scrollbar-color: #dadce0 transparent;

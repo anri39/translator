@@ -5,18 +5,24 @@ type inputboxProps = {
   showwordCount: boolean;
   showclearButton: boolean;
   readonly?: boolean;
+  textContent: string;
+  setTextContent: (content: string) => void;
+  translateFunction?: () => void;
 };
 
 export default function InputBox({
   showwordCount,
   showclearButton,
   readonly,
+  textContent,
+  setTextContent,
+  translateFunction,
 }: inputboxProps) {
   const [textCount, setTextCount] = useState(0);
-  const [textContent, setTextContent] = useState("");
   let maxChars = 5000;
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    if (readonly) return;
     const newContent = event.target.value;
     if (newContent.length <= maxChars) {
       setTextContent(newContent);
@@ -31,6 +37,12 @@ export default function InputBox({
         value={textContent}
         readOnly={readonly}
         disabled={readonly}
+        onKeyDown={async (e) => {
+          if (e.key === "Enter" && translateFunction) {
+            e.preventDefault();
+            await translateFunction();
+          }
+        }}
       />
       <button
         style={{
